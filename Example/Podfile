@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'iOSLaTeX_Example' do
+  pod 'iOSLaTeX', :path => '../'
+
+  target 'iOSLaTeX_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
