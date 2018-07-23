@@ -1,0 +1,22 @@
+{
+  "name": "iOSLaTeX",
+  "version": "0.1.0",
+  "summary": "A short description of iOSLaTeX.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/shujew/iOSLaTeX",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "shujew": "shuaib.jewon@slader.com"
+  },
+  "source": {
+    "git": "https://github.com/shujew/iOSLaTeX.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "iOSLaTeX/Classes/**/*"
+}
