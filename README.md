@@ -1,9 +1,6 @@
 # iOSLaTeX
 
-[![CI Status](https://img.shields.io/travis/shujew/iOSLaTeX.svg?style=flat)](https://travis-ci.org/shujew/iOSLaTeX)
-[![Version](https://img.shields.io/cocoapods/v/iOSLaTeX.svg?style=flat)](https://cocoapods.org/pods/iOSLaTeX)
-[![License](https://img.shields.io/cocoapods/l/iOSLaTeX.svg?style=flat)](https://cocoapods.org/pods/iOSLaTeX)
-[![Platform](https://img.shields.io/cocoapods/p/iOSLaTeX.svg?style=flat)](https://cocoapods.org/pods/iOSLaTeX)
+iOSLaTeX provides a LaTeXRenderer which loads a minified version of MathJax in a WkWebView to render LaTeX in iOS. It returns image which can be used universally in iOS. It is accompanied by a LaTeXImageView class which uses LaTeXRenderer to display a latex string. See example project for usage.
 
 ## Example
 
@@ -17,7 +14,7 @@ iOSLaTeX is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'iOSLaTeX'
+pod 'iOSLaTeX', :git => 'https://github.com/shujew/iOSLaTeX.git'
 ```
 
 ## Author
