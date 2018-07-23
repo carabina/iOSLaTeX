@@ -7,36 +7,24 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'iOSLaTeX'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of iOSLaTeX.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/shujew/iOSLaTeX'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'shujew' => 'shuaib.jewon@slader.com' }
-  s.source           = { :git => 'https://github.com/shujew/iOSLaTeX.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'iOSLaTeX/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'iOSLaTeX' => ['iOSLaTeX/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    s.name             = 'iOSLaTeX'
+    s.version          = '0.1.0'
+    s.summary          = 'iOSLaTeX uses MathJax to render LaTeX in iOS'
+    
+    s.description      = 'iOSLaTeX provides a LaTeX Renderer which loads a minified version of MathJax in a WkWebView to render LaTeX in iOS. It returns image which can be used universally in iOS. It is also accompanied by a LaTeXImageView class.'
+    
+    s.homepage         = 'https://github.com/shujew/iOSLaTeX'
+    s.license          = { :type => 'MIT', :file => 'LICENSE' }
+    s.author           = { 'shujew' => 'shuaib.jewon@slader.com' }
+    s.source           = { :git => 'https://github.com/shujew/iOSLaTeX.git', :tag => s.version.to_s }
+    
+    s.ios.deployment_target = '9.0'
+    
+    s.source_files = 'iOSLaTeX/Classes/**/*'
+    
+    s.resources = ['iOSLaTeX/External/mathjax', 'iOSLaTeX/Assets/*']
+    
+    s.frameworks = 'WebKit'
+    
+    s.swift_version = '3.2'
 end

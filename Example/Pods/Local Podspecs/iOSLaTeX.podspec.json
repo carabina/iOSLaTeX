@@ -1,8 +1,8 @@
 {
   "name": "iOSLaTeX",
   "version": "0.1.0",
-  "summary": "A short description of iOSLaTeX.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "iOSLaTeX uses MathJax to render LaTeX in iOS",
+  "description": "iOSLaTeX provides a LaTeX Renderer which loads a minified version of MathJax in a WkWebView to render LaTeX in iOS. It returns image which can be used universally in iOS. It is also accompanied by a LaTeXImageView class.",
   "homepage": "https://github.com/shujew/iOSLaTeX",
   "license": {
     "type": "MIT",
@@ -16,7 +16,13 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "iOSLaTeX/Classes/**/*"
+  "source_files": "iOSLaTeX/Classes/**/*",
+  "resources": [
+    "iOSLaTeX/External/mathjax",
+    "iOSLaTeX/Assets/*"
+  ],
+  "frameworks": "WebKit",
+  "swift_version": "3.2"
 }

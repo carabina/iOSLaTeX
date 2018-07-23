@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LaTeX iOS Renderer</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                    outline: 0;
+                    font-size: 100%;
+                    vertical-align: baseline;
+                    background: transparent;
+                }
+            
+                #latex-view {
+                    white-space: pre;
+                    min-height: 0px;
+                    min-width: 0px;
+                    overflow: hidden;
+                }
+            </style>
+            
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({ tex2jax: {inlineMath: {mathJaxInLineMathConfig placeholder} } });
+                
+                MathJax.Hub.Queue(function () {
+                                  try {
+                                  var width = document.getElementById('latex-view').clientWidth;
+                                  var height = document.getElementById('latex-view').clientHeight;
+                                  webkit.messageHandlers.callbackHandler.postMessage('{"height":' + height + ',"width":' + width + '}');
+                                  } catch(err) {
+                                  console.log('The native context does not exist yet');
+                                  }
+                                  });
+                </script>
+            
+            <script type="text/javascript" async src="mathjax/MathJax.js?config=TeX-AMS_CHTML-full"></script>
+            </head>
+    
+    <body>
+        
+        <div id='latex-view'>
+            {latex placeholder}
+        </div>
+        
+    </body>
+</html>

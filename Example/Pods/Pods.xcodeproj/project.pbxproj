@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		12E5C527F6F291D04244A119E10CA3FC /* Pods-iOSLaTeX_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E50D8900C358F6319B481FBBEB6DBBE8 /* Pods-iOSLaTeX_Tests-dummy.m */; };
-		36E411A4F95C5AEDC4E50BA2C2E9D7F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		78B6317CE3B9EC6E4203EA95A50D499D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		82513E1BE6E32134026D37245C2F6AB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		8D64C47D65282B026372E81CBBC49AA4 /* iOSLaTeX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1F365ED8107A4695369C7C30234F1 /* iOSLaTeX-dummy.m */; };
+		15E71FD653F92733BEC3F1052BD83D6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7277D349E694C53053AFD4685658010 /* Foundation.framework */; };
+		36E411A4F95C5AEDC4E50BA2C2E9D7F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7277D349E694C53053AFD4685658010 /* Foundation.framework */; };
+		62B0F948DA325C8A4C4084F7858FC8D1 /* LaTeXRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */; };
+		7399B1D67F23CBEAB228E035F230D72A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10953296094C915BC9640574E3B474C2 /* WebKit.framework */; };
+		78B6317CE3B9EC6E4203EA95A50D499D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7277D349E694C53053AFD4685658010 /* Foundation.framework */; };
+		831E961F83E5E9D05CF1FC1C01F32DF8 /* iOSLaTeX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ADF8FCAC62B4FBF0D55703ACCF966F65 /* iOSLaTeX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D6D5B89BAE14229F1E2B457784D7732 /* Pods-iOSLaTeX_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCAACF17241729F32615B9989823AD /* Pods-iOSLaTeX_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		93492409BC978CD1DB3739F7E40E56EB /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CAA7C5C19A11658C2E867DE099F328 /* ReplaceMe.swift */; };
 		A93C9B672ECD5105CCDAE6A716F7E1AC /* Pods-iOSLaTeX_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B33FBC6E7F17C1165D69A08D8236384 /* Pods-iOSLaTeX_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC2D79181060CDB47A1EEDAE25E60A44 /* iOSLaTeX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 145574016134FD0A9158B81A51AC1FE0 /* iOSLaTeX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4546E82F8E88BA7CF41927CE6227A6F /* LaTeXImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */; };
+		D8761261E7255F20217424F7C26A5208 /* mathjax in Resources */ = {isa = PBXBuildFile; fileRef = 9DC4112EDCF01177FB3BDD999387B850 /* mathjax */; };
+		E32E51D78CFED0763B1E0CC8F07B960C /* iOSLaTeX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 365E80DC728DDF59774502F6E091EB1B /* iOSLaTeX-dummy.m */; };
+		F0293FFD89D1E7D36761B982760405CE /* MathJaxRenderer.html in Resources */ = {isa = PBXBuildFile; fileRef = 174D426CDDC94E3C82021F721D3BFB61 /* MathJaxRenderer.html */; };
 		FBEE23DF791A7D3DCC4884857310839D /* Pods-iOSLaTeX_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A13B7EDDAE7914DB601031EB6092A7B2 /* Pods-iOSLaTeX_Example-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +28,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0BB953F1A248943F2FE90FF6A68E9886;
+			remoteGlobalIDString = 631D537C7436AE62D75478F0ED4C938B;
 			remoteInfo = iOSLaTeX;
 		};
 		DBFE04E0FF8288C0C4DD2E1DE7CF840B /* PBXContainerItemProxy */ = {
@@ -37,41 +41,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		145574016134FD0A9158B81A51AC1FE0 /* iOSLaTeX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSLaTeX-umbrella.h"; sourceTree = "<group>"; };
-		1AE71419910F57AB4BE35B75E23F494F /* iOSLaTeX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSLaTeX.modulemap; sourceTree = "<group>"; };
-		1BD1F365ED8107A4695369C7C30234F1 /* iOSLaTeX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSLaTeX-dummy.m"; sourceTree = "<group>"; };
+		10953296094C915BC9640574E3B474C2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		174D426CDDC94E3C82021F721D3BFB61 /* MathJaxRenderer.html */ = {isa = PBXFileReference; includeInIndex = 1; path = MathJaxRenderer.html; sourceTree = "<group>"; };
+		25C46103A818FC6C5D6A9FEE54F850AC /* iOSLaTeX.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = iOSLaTeX.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		29E7FBB795DECE46673C67CE786FA2C3 /* Pods_iOSLaTeX_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iOSLaTeX_Tests.framework; path = "Pods-iOSLaTeX_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		304C085D90385CCA18D5F1E7932AE397 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31B70FD5CEC847A95E928DD2B88DA68D /* Pods-iOSLaTeX_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iOSLaTeX_Tests.modulemap"; sourceTree = "<group>"; };
 		348540F7C668EF36E9213539CB466F47 /* Pods-iOSLaTeX_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOSLaTeX_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		365E80DC728DDF59774502F6E091EB1B /* iOSLaTeX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSLaTeX-dummy.m"; sourceTree = "<group>"; };
+		38E26CE2EE5E513439D3A47908DBD3D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3C1BF28904F4D43225B6EECCD8270C4D /* iOSLaTeX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSLaTeX.modulemap; sourceTree = "<group>"; };
 		509FF6911C8D85D2C81EC85405CE5A8A /* Pods-iOSLaTeX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOSLaTeX_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		57158797260090FF67B5EBB0B43111A0 /* Pods-iOSLaTeX_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSLaTeX_Example-frameworks.sh"; sourceTree = "<group>"; };
-		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5BA6603FA8E95D5820F52EB432D6F6F8 /* iOSLaTeX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSLaTeX.xcconfig; sourceTree = "<group>"; };
 		5D4791F608BB3AA69C5072036D3632AA /* Pods-iOSLaTeX_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSLaTeX_Example-resources.sh"; sourceTree = "<group>"; };
 		636F8B0C188EB664C1C5B61B296079FB /* Pods-iOSLaTeX_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSLaTeX_Tests-resources.sh"; sourceTree = "<group>"; };
 		6C64365D05214919EE858A66C3053AF1 /* iOSLaTeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iOSLaTeX.framework; path = iOSLaTeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		711B9D16BF697700D3E22A55C27D3BE0 /* iOSLaTeX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSLaTeX.xcconfig; sourceTree = "<group>"; };
 		7442A914435BBE0779D43C23B4937854 /* Pods-iOSLaTeX_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOSLaTeX_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		82043E30191934A97622B5D66F8910E6 /* Pods-iOSLaTeX_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iOSLaTeX_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		83B59DA130F8A6EAE9496E906E71EDAD /* Pods-iOSLaTeX_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSLaTeX_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		879CC635DB9F748219EB1A093EBEFE5C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		8B33FBC6E7F17C1165D69A08D8236384 /* Pods-iOSLaTeX_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iOSLaTeX_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9214EF8E974A1D34ADA723362C754E73 /* Pods-iOSLaTeX_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iOSLaTeX_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DC4112EDCF01177FB3BDD999387B850 /* mathjax */ = {isa = PBXFileReference; includeInIndex = 1; path = mathjax; sourceTree = "<group>"; };
 		A13B7EDDAE7914DB601031EB6092A7B2 /* Pods-iOSLaTeX_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iOSLaTeX_Example-dummy.m"; sourceTree = "<group>"; };
 		A18376EFF51F20D5DB70CB71708C0D95 /* Pods-iOSLaTeX_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iOSLaTeX_Example.modulemap"; sourceTree = "<group>"; };
+		A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LaTeXRenderer.swift; path = iOSLaTeX/Classes/LaTeXRenderer.swift; sourceTree = "<group>"; };
 		A5CCAACF17241729F32615B9989823AD /* Pods-iOSLaTeX_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iOSLaTeX_Example-umbrella.h"; sourceTree = "<group>"; };
-		AD1E2FFC1D672C3AFC9F12E5365E7FED /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADF8FCAC62B4FBF0D55703ACCF966F65 /* iOSLaTeX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSLaTeX-umbrella.h"; sourceTree = "<group>"; };
 		AF26A3022FD9D408F9E33C728284D2FC /* Pods-iOSLaTeX_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOSLaTeX_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B4DF123B3F5671ED9BF84D043F6A86EF /* Pods-iOSLaTeX_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOSLaTeX_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B5CAA7C5C19A11658C2E867DE099F328 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = iOSLaTeX/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		B8A2E75F0044C1DBB0052364092D6E24 /* iOSLaTeX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSLaTeX-prefix.pch"; sourceTree = "<group>"; };
 		BB8CF527EFEC4733763B0E74078C5C5A /* Pods_iOSLaTeX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iOSLaTeX_Example.framework; path = "Pods-iOSLaTeX_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFB3598871FFD50BC73A464BBBA7777E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		D7277D349E694C53053AFD4685658010 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E50D8900C358F6319B481FBBEB6DBBE8 /* Pods-iOSLaTeX_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iOSLaTeX_Tests-dummy.m"; sourceTree = "<group>"; };
+		E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LaTeXImageView.swift; path = iOSLaTeX/Classes/LaTeXImageView.swift; sourceTree = "<group>"; };
 		EAF3516F4902A901B5D7EAB444A42EA4 /* Pods-iOSLaTeX_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOSLaTeX_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		EB804A6712F5DCB084A83C9EBE873EB1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		EE57A9BF60D944CCAAA35705467CFE81 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1089DFAE66D3FE739A3C0324BF3877F /* iOSLaTeX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSLaTeX-prefix.pch"; sourceTree = "<group>"; };
-		F6A83868C7460356C233DFDE3907CEAF /* iOSLaTeX.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = iOSLaTeX.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FB44F3A6B26298121118AECEBA7CF53E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +91,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B49B918FD83ACF52F834F45C3FCF0CC9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82513E1BE6E32134026D37245C2F6AB3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFA1FEB494596273814551CC2630ED4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,31 +99,74 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E84E66A8542F144727E38DB75B710D85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15E71FD653F92733BEC3F1052BD83D6F /* Foundation.framework in Frameworks */,
+				7399B1D67F23CBEAB228E035F230D72A /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		324BD72924C7EEF8FEB75F31204E7BD7 /* Pod */ = {
+		183C7518A84B5FE27672945D3F44E558 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F6A83868C7460356C233DFDE3907CEAF /* iOSLaTeX.podspec */,
-				BFB3598871FFD50BC73A464BBBA7777E /* LICENSE */,
-				EB804A6712F5DCB084A83C9EBE873EB1 /* README.md */,
+				D7277D349E694C53053AFD4685658010 /* Foundation.framework */,
+				10953296094C915BC9640574E3B474C2 /* WebKit.framework */,
 			);
-			name = Pod;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		4B636DA593A83EA2EDF29DA0F3565AED /* Support Files */ = {
+		401D9F49A95F63657F0E7FE269DDFF32 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				AD1E2FFC1D672C3AFC9F12E5365E7FED /* Info.plist */,
-				1AE71419910F57AB4BE35B75E23F494F /* iOSLaTeX.modulemap */,
-				711B9D16BF697700D3E22A55C27D3BE0 /* iOSLaTeX.xcconfig */,
-				1BD1F365ED8107A4695369C7C30234F1 /* iOSLaTeX-dummy.m */,
-				F1089DFAE66D3FE739A3C0324BF3877F /* iOSLaTeX-prefix.pch */,
-				145574016134FD0A9158B81A51AC1FE0 /* iOSLaTeX-umbrella.h */,
+				9DC4112EDCF01177FB3BDD999387B850 /* mathjax */,
+			);
+			name = External;
+			path = iOSLaTeX/External;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				183C7518A84B5FE27672945D3F44E558 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45ADCF9C41BDD924A3C2F9B012543900 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB44F3A6B26298121118AECEBA7CF53E /* Info.plist */,
+				3C1BF28904F4D43225B6EECCD8270C4D /* iOSLaTeX.modulemap */,
+				5BA6603FA8E95D5820F52EB432D6F6F8 /* iOSLaTeX.xcconfig */,
+				365E80DC728DDF59774502F6E091EB1B /* iOSLaTeX-dummy.m */,
+				B8A2E75F0044C1DBB0052364092D6E24 /* iOSLaTeX-prefix.pch */,
+				ADF8FCAC62B4FBF0D55703ACCF966F65 /* iOSLaTeX-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/iOSLaTeX";
+			sourceTree = "<group>";
+		};
+		4AD06900CC5B14048FBFBE4FC51FE1FF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				174D426CDDC94E3C82021F721D3BFB61 /* MathJaxRenderer.html */,
+			);
+			name = Assets;
+			path = iOSLaTeX/Assets;
+			sourceTree = "<group>";
+		};
+		4F2E0527BB879EE8258664EE6B1F1FD7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4AD06900CC5B14048FBFBE4FC51FE1FF /* Assets */,
+				401D9F49A95F63657F0E7FE269DDFF32 /* External */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		4F44A85B1ABB9DEE076724B400580CE2 /* Products */ = {
@@ -154,39 +197,46 @@
 			path = "Target Support Files/Pods-iOSLaTeX_Example";
 			sourceTree = "<group>";
 		};
-		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+		6605D9542AA7F60D0A7AE5EAC00EACF8 /* iOSLaTeX */ = {
 			isa = PBXGroup;
 			children = (
-				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+				E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */,
+				A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */,
+				9B4BC34206CDD4D68356D552FB52F941 /* Pod */,
+				4F2E0527BB879EE8258664EE6B1F1FD7 /* Resources */,
+				45ADCF9C41BDD924A3C2F9B012543900 /* Support Files */,
 			);
-			name = iOS;
+			name = iOSLaTeX;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				7F686B8394F3153459C32D6B9559B257 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				862CBC37C692455E67B5F428D8D2016F /* Development Pods */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				4F44A85B1ABB9DEE076724B400580CE2 /* Products */,
 				DBC28F81BD5660A919F775D5F402D721 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7F686B8394F3153459C32D6B9559B257 /* Development Pods */ = {
+		862CBC37C692455E67B5F428D8D2016F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F9EAD632A8DF7C361545EECF8710D0E8 /* iOSLaTeX */,
+				6605D9542AA7F60D0A7AE5EAC00EACF8 /* iOSLaTeX */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		9B4BC34206CDD4D68356D552FB52F941 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+				25C46103A818FC6C5D6A9FEE54F850AC /* iOSLaTeX.podspec */,
+				879CC635DB9F748219EB1A093EBEFE5C /* LICENSE */,
+				38E26CE2EE5E513439D3A47908DBD3D0 /* README.md */,
 			);
-			name = Frameworks;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		C7DE3EDBA3EE19B0FB0208C659344668 /* Pods-iOSLaTeX_Tests */ = {
@@ -216,33 +266,22 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		F9EAD632A8DF7C361545EECF8710D0E8 /* iOSLaTeX */ = {
-			isa = PBXGroup;
-			children = (
-				B5CAA7C5C19A11658C2E867DE099F328 /* ReplaceMe.swift */,
-				324BD72924C7EEF8FEB75F31204E7BD7 /* Pod */,
-				4B636DA593A83EA2EDF29DA0F3565AED /* Support Files */,
-			);
-			name = iOSLaTeX;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0EC8A75CCE8E0E42712A1AD980C84BE7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC2D79181060CDB47A1EEDAE25E60A44 /* iOSLaTeX-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4359D7A72FDE51A8197E8B7C673CC0F7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A93C9B672ECD5105CCDAE6A716F7E1AC /* Pods-iOSLaTeX_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		609D6D35BCBABBFE65BC1DD890CD355B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831E961F83E5E9D05CF1FC1C01F32DF8 /* iOSLaTeX-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +296,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BB953F1A248943F2FE90FF6A68E9886 /* iOSLaTeX */ = {
+		631D537C7436AE62D75478F0ED4C938B /* iOSLaTeX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3323B03F5008AD7E672D09CFF5DC0C57 /* Build configuration list for PBXNativeTarget "iOSLaTeX" */;
+			buildConfigurationList = 904146E7E06A54F98DCBA3C7CB03B36C /* Build configuration list for PBXNativeTarget "iOSLaTeX" */;
 			buildPhases = (
-				D6BAD2597B88F793957A6FE675A5458A /* Sources */,
-				B49B918FD83ACF52F834F45C3FCF0CC9 /* Frameworks */,
-				0EC8A75CCE8E0E42712A1AD980C84BE7 /* Headers */,
+				E13BD8AF98822F45EF7C2C3846480654 /* Sources */,
+				E84E66A8542F144727E38DB75B710D85 /* Frameworks */,
+				E95D65670E442E40BB8AE9B5BAAAC344 /* Resources */,
+				609D6D35BCBABBFE65BC1DD890CD355B /* Headers */,
 			);
 			buildRules = (
 			);
@@ -331,12 +371,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0BB953F1A248943F2FE90FF6A68E9886 /* iOSLaTeX */,
+				631D537C7436AE62D75478F0ED4C938B /* iOSLaTeX */,
 				67C65093A3C8B4715CE6E6B6DB028AF5 /* Pods-iOSLaTeX_Example */,
 				8BA9E9C88748CCF6FAE41558FEDB3D29 /* Pods-iOSLaTeX_Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E95D65670E442E40BB8AE9B5BAAAC344 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8761261E7255F20217424F7C26A5208 /* mathjax in Resources */,
+				F0293FFD89D1E7D36761B982760405CE /* MathJaxRenderer.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0402C7CDF35D1FF79DBE0F5096D05C01 /* Sources */ = {
@@ -355,12 +407,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6BAD2597B88F793957A6FE675A5458A /* Sources */ = {
+		E13BD8AF98822F45EF7C2C3846480654 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D64C47D65282B026372E81CBBC49AA4 /* iOSLaTeX-dummy.m in Sources */,
-				93492409BC978CD1DB3739F7E40E56EB /* ReplaceMe.swift in Sources */,
+				E32E51D78CFED0763B1E0CC8F07B960C /* iOSLaTeX-dummy.m in Sources */,
+				C4546E82F8E88BA7CF41927CE6227A6F /* LaTeXImageView.swift in Sources */,
+				62B0F948DA325C8A4C4084F7858FC8D1 /* LaTeXRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +429,7 @@
 		C23044286983B349583921337087C5E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iOSLaTeX;
-			target = 0BB953F1A248943F2FE90FF6A68E9886 /* iOSLaTeX */;
+			target = 631D537C7436AE62D75478F0ED4C938B /* iOSLaTeX */;
 			targetProxy = A2BCD2910A2D0E11920EFE99742A8543 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -410,39 +463,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5B60D50B410FED610341C0BBD59C445C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 711B9D16BF697700D3E22A55C27D3BE0 /* iOSLaTeX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/iOSLaTeX/iOSLaTeX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/iOSLaTeX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/iOSLaTeX/iOSLaTeX.modulemap";
-				PRODUCT_MODULE_NAME = iOSLaTeX;
-				PRODUCT_NAME = iOSLaTeX;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -540,38 +560,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A09B7407D64C664EFB87F046BE57EAEF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 711B9D16BF697700D3E22A55C27D3BE0 /* iOSLaTeX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/iOSLaTeX/iOSLaTeX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/iOSLaTeX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/iOSLaTeX/iOSLaTeX.modulemap";
-				PRODUCT_MODULE_NAME = iOSLaTeX;
-				PRODUCT_NAME = iOSLaTeX;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -705,6 +693,71 @@
 			};
 			name = Release;
 		};
+		D5CA4E1A47AD39245BF606967E28A027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA6603FA8E95D5820F52EB432D6F6F8 /* iOSLaTeX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/iOSLaTeX/iOSLaTeX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iOSLaTeX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/iOSLaTeX/iOSLaTeX.modulemap";
+				PRODUCT_MODULE_NAME = iOSLaTeX;
+				PRODUCT_NAME = iOSLaTeX;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F18007B8598BF82E4C68C1D3DADFE6E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA6603FA8E95D5820F52EB432D6F6F8 /* iOSLaTeX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/iOSLaTeX/iOSLaTeX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iOSLaTeX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/iOSLaTeX/iOSLaTeX.modulemap";
+				PRODUCT_MODULE_NAME = iOSLaTeX;
+				PRODUCT_NAME = iOSLaTeX;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -726,11 +779,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3323B03F5008AD7E672D09CFF5DC0C57 /* Build configuration list for PBXNativeTarget "iOSLaTeX" */ = {
+		904146E7E06A54F98DCBA3C7CB03B36C /* Build configuration list for PBXNativeTarget "iOSLaTeX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A09B7407D64C664EFB87F046BE57EAEF /* Debug */,
-				5B60D50B410FED610341C0BBD59C445C /* Release */,
+				F18007B8598BF82E4C68C1D3DADFE6E2 /* Debug */,
+				D5CA4E1A47AD39245BF606967E28A027 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -29,9 +29,9 @@
 
 /* Begin PBXFileReference section */
 		015321B4A9A408214BBB2CBE /* Pods-iOSLaTeX_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSLaTeX_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSLaTeX_Example/Pods-iOSLaTeX_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		097F80EB49191D0D9EFE45A0 /* iOSLaTeX.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = iOSLaTeX.podspec; path = ../iOSLaTeX.podspec; sourceTree = "<group>"; };
+		097F80EB49191D0D9EFE45A0 /* iOSLaTeX.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = iOSLaTeX.podspec; path = ../iOSLaTeX.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		21763B383AC54B856DDC807B /* Pods_iOSLaTeX_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSLaTeX_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25834FAB835083498C5C4076 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		25834FAB835083498C5C4076 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* iOSLaTeX_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSLaTeX_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		B0040B8D7F50BA5A68BE26CB /* Pods_iOSLaTeX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSLaTeX_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0148BF99273DAA0BD8792D0 /* Pods-iOSLaTeX_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSLaTeX_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSLaTeX_Tests/Pods-iOSLaTeX_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C6735699025C2001626F1960 /* Pods-iOSLaTeX_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSLaTeX_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSLaTeX_Tests/Pods-iOSLaTeX_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D5237ED56CF8C5CE14A4E6B0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D5237ED56CF8C5CE14A4E6B0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,10 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YJJVCMQL96;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YJJVCMQL96;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -469,6 +471,7 @@
 			baseConfigurationReference = 015321B4A9A408214BBB2CBE /* Pods-iOSLaTeX_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YJJVCMQL96;
 				INFOPLIST_FILE = iOSLaTeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -484,6 +487,7 @@
 			baseConfigurationReference = 9A285485424D2A0BE8B4DD0D /* Pods-iOSLaTeX_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YJJVCMQL96;
 				INFOPLIST_FILE = iOSLaTeX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -498,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0148BF99273DAA0BD8792D0 /* Pods-iOSLaTeX_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YJJVCMQL96;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -520,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C6735699025C2001626F1960 /* Pods-iOSLaTeX_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YJJVCMQL96;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
