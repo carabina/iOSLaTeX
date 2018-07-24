@@ -15,83 +15,110 @@ public protocol LaTeXRendererDelegate: class {
 }
 
 public class LaTeXRenderer: NSObject {
-    static var mathJaxInLineMathPlaceholder: String = "{mathJaxInLineMathConfig placeholder}"
-    static var htmlPlaceholder: String = "{latex placeholder}"
+    public var timeoutInSeconds: Double = 10.0
+    public var delayInMilliseconds: Int = 100 /* see comments to understand usage */
     
-    static var mathJaxCallbackHandler: String = "callbackHandler"
-    static var mathJaxInLineMathConfig: String = "[['$','$'],['\\(','\\)'], ['[math]','[/math]']]"
+    public fileprivate(set) var isReady: Bool = false
     
-    static var timeoutInSeconds: Double = 10.0
-    static var delayInMilliseconds: Int = 100 /* see comments to understand usage */
+    weak public var delegate: LaTeXRendererDelegate?
+    weak private var parentView: UIView! /* needed to speed up rendering process */
     
-    weak var delegate: LaTeXRendererDelegate?
-    weak private var parentView: UIView?
+    fileprivate var mathJaxCallbackHandler: String = "callbackHandler"
     
-    private var webView: WKWebView?
+    private var webView: WKWebView!
+    private var hidingView: UIView? /* used to hide WkWebView while rendering LaTeX */
     private var timeoutTimer: Timer?
     
-    private var hidingView: UIView? /* used to hide WkWebView while rendering LaTeX */
+    private override init() {}
     
-    public func render(_ laTeX: String, forView parentView: UIView) {
-        self.reset()
+    public init(parentView: UIView, delegate: LaTeXRendererDelegate?) {
+        super.init()
         
         self.parentView = parentView
-        
-        self.setupWebView()
-        
-        guard let webView = self.webView else {
-            self.handleLaTeXRenderingFailure("Failure initializing WkWebView")
-            return
-        }
+        self.delegate = delegate
         
         let bundle = Bundle(for: type(of: self))
+        let bundlePath = bundle.bundlePath
+        let htmlTemplatePath = bundle.path(forResource: "MathJaxRenderer", ofType: "html")!
         
-        guard let path = bundle.path(forResource: "MathJaxRenderer", ofType: "html"),
-            let htmlTemplate = try? String(contentsOfFile: path) else {
-                
-                self.handleLaTeXRenderingFailure("Failure loading MathJax HTML template")
-                return
-        }
+        let webViewBaseUrl = URL(fileURLWithPath: bundlePath, isDirectory: true)
+        let webViewHtml = try! String(contentsOfFile: htmlTemplatePath)
         
-        let htmlDirectory = bundle.bundlePath
-        let baseUrl = URL(fileURLWithPath: htmlDirectory, isDirectory: true)
+        let contentController = WKUserContentController();
+        let config = WKWebViewConfiguration()
         
-        self.hidingView = UIView(frame: parentView.bounds)
-        self.hidingView?.backgroundColor = parentView.backgroundColor
+        contentController.add(self, name: self.mathJaxCallbackHandler)
+        config.userContentController = contentController
+        
+        let parentBounds = parentView.bounds
+        let webViewFrame = CGRect(origin: parentBounds.origin, size: CGSize(width: parentBounds.size.width, height: parentBounds.size.height))
+        
+        self.webView = WKWebView(frame: webViewFrame, configuration: config)
         
         /*
          * Need to add WkWebView to view hierarchy to improve loading time (Apple bug)
          * If not added, complex/long LaTeX will take ages to render
          */
-        parentView.addSubview(self.hidingView!)
-        parentView.addSubview(webView)
-        parentView.sendSubview(toBack: webView)
+        self.webView.isHidden = true
+        self.parentView.addSubview(self.webView)
+        self.parentView.sendSubview(toBack: self.webView)
         
         /*
          * Figure out why delay is needed here
          * If no delay, webview will appear for a split second
          */
-        
-        let delay = DispatchTime.now() + .milliseconds(LaTeXRenderer.delayInMilliseconds)
-        DispatchQueue.main.asyncAfter(deadline: delay) {
-            let html = htmlTemplate
-                .replacingOccurrences(of: LaTeXRenderer.mathJaxInLineMathPlaceholder, with: LaTeXRenderer.mathJaxInLineMathConfig)
-                .replacingOccurrences(of: LaTeXRenderer.htmlPlaceholder, with: laTeX)
+        let delay = DispatchTime.now() + .milliseconds(self.delayInMilliseconds)
+        DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
+            guard let strongSelf = self else { return }
             
-            webView.navigationDelegate = self
-            webView.uiDelegate = self
+            strongSelf.webView.navigationDelegate = self
+            strongSelf.webView.uiDelegate = self
             
-            webView.loadHTMLString(html, baseURL: baseUrl)
+            strongSelf.webView.loadHTMLString(webViewHtml, baseURL: webViewBaseUrl)
+        }
+    }
+    
+    public func render(_ laTeX: String) {
+        guard self.isReady == true, let webView = webView else {
+            self.handleLaTeXRenderingFailure("LaTeX Renderer not yet ready")
+            return
         }
         
-        timeoutTimer = Timer.scheduledTimer(
-            timeInterval: LaTeXRenderer.timeoutInSeconds,
+        self.hidingView = UIView(frame: self.parentView.bounds)
+        self.hidingView!.backgroundColor = parentView.backgroundColor
+        self.parentView.addSubview(self.hidingView!)
+        
+        self.timeoutTimer?.invalidate()
+        self.webView.stopLoading()
+        self.webView.isHidden = false
+
+        /*
+         * Need to escape '\' in javascript
+         */
+        let js = "renderLaTeX('" + laTeX.replacingOccurrences(of: "\\", with: "\\\\") + "')"
+        webView.evaluateJavaScript(js, completionHandler: nil)
+        
+        self.timeoutTimer = Timer.scheduledTimer(
+            timeInterval: self.timeoutInSeconds,
             target: self,
             selector: #selector(self.renderTimeout),
             userInfo: nil,
             repeats: false
         )
     }
+    
+    @objc private func renderTimeout() {
+        self.timeoutTimer?.invalidate()
+        
+        self.handleLaTeXRenderingFailure("Timed out while rendering LaTeX")
+    }
+    
+    fileprivate func handleLaTeXRenderingFailure(_ message: String) {
+        self.timeoutTimer?.invalidate()
+        
+        self.delegate?.LaTeXRendererDidFail(message)
+    }
+    
     
     fileprivate func handleLaTeXRenderingSuccess(message: Any) {
         self.timeoutTimer?.invalidate()
@@ -119,35 +146,30 @@ public class LaTeXRenderer: NSObject {
                 return
             }
             
-            strongSelf.delegate?.LaTeXRendererDidComplete(image: image)
+            if let _ = strongSelf.hidingView?.superview, let _ = strongSelf.hidingView?.superview {
+                strongSelf.hidingView?.removeFromSuperview()
+            }
             
-            strongSelf.reset()
+            strongSelf.webView.isHidden = true
+            
+            strongSelf.delegate?.LaTeXRendererDidComplete(image: image)
         }
     }
     
-    fileprivate func handleLaTeXRenderingFailure(_ message: String) {
-        self.timeoutTimer?.invalidate()
-        
-        self.delegate?.LaTeXRendererDidFail(message)
-        
-        self.reset()
-    }
+    
     
     private func getLaTeXImage(withWidth width: Int, withHeight height: Int, completion: @escaping (UIImage?, String?) -> ()) {
-        guard let webView = self.webView else {
-            completion(nil, "WkWebView is null")
-            return
-        }
-        
         webView.frame = CGRect(origin: webView.frame.origin, size: webView.scrollView.contentSize)
         
         /*
          * If no delay, webview's frame change will not have taken effect yet
          */
-        let delay = DispatchTime.now() + .milliseconds(LaTeXRenderer.delayInMilliseconds)
-        DispatchQueue.main.asyncAfter(deadline: delay) {
-            UIGraphicsBeginImageContextWithOptions(webView.bounds.size, true, 0)
-            webView.drawHierarchy(in: webView.bounds, afterScreenUpdates: true)
+        let delay = DispatchTime.now() + .milliseconds(self.delayInMilliseconds)
+        DispatchQueue.main.asyncAfter(deadline: delay) { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            UIGraphicsBeginImageContextWithOptions(strongSelf.webView.bounds.size, true, 0)
+            strongSelf.webView.drawHierarchy(in: strongSelf.webView.bounds, afterScreenUpdates: true)
             
             guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
                 completion(nil, "Failure while taking WKWebView snapshot")
@@ -156,55 +178,13 @@ public class LaTeXRenderer: NSObject {
             
             UIGraphicsEndImageContext()
             
-            guard let croppedImage = self.crop(image, toWidth: width, andHeight: height) else {
+            guard let croppedImage = strongSelf.crop(image, toWidth: width, andHeight: height) else {
                 completion(nil, "Failure while cropping WKWebView snapshot")
                 return
             }
             
             completion(croppedImage, nil)
         }
-    }
-    
-    private func reset() {
-        self.webView?.stopLoading()
-        self.webView?.configuration.userContentController.removeScriptMessageHandler(forName: LaTeXRenderer.mathJaxCallbackHandler)
-        
-        self.webView?.uiDelegate = nil
-        self.webView?.navigationDelegate = nil
-        
-        if let _ = self.webView?.superview, let _ = self.webView?.superview {
-            self.webView?.removeFromSuperview()
-        }
-        
-        if let _ = self.hidingView?.superview, let _ = self.hidingView?.superview {
-            self.hidingView?.removeFromSuperview()
-        }
-        
-        self.webView = nil
-        self.hidingView = nil
-        self.parentView = nil
-        
-        self.timeoutTimer?.invalidate()
-        self.timeoutTimer = nil
-    }
-    
-    @objc private func renderTimeout() {
-        self.handleLaTeXRenderingFailure("Timed out while rendering LaTeX")
-    }
-    
-    private func setupWebView() {
-        guard let parentView = self.parentView else { return }
-        
-        let frame = parentView.bounds
-        let contentController = WKUserContentController();
-        let config = WKWebViewConfiguration()
-        
-        contentController.add(self, name: LaTeXRenderer.mathJaxCallbackHandler)
-        config.userContentController = contentController
-        
-        let webViewFrame = CGRect(origin: frame.origin, size: CGSize(width: frame.size.width, height: frame.size.height))
-        
-        self.webView = WKWebView(frame: webViewFrame, configuration: config)
     }
     
     private func crop(_ image: UIImage, toWidth width: Int, andHeight height: Int) -> UIImage? {
@@ -229,13 +209,18 @@ public class LaTeXRenderer: NSObject {
 
 extension LaTeXRenderer: WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if(message.name == LaTeXRenderer.mathJaxCallbackHandler) {
+        if(message.name == self.mathJaxCallbackHandler) {
             self.handleLaTeXRenderingSuccess(message: message.body)
         }
     }
     
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.isReady = true
+    }
+    
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.handleLaTeXRenderingFailure("WKWebView navigation failed")
+        self.isReady = false
     }
 }
 

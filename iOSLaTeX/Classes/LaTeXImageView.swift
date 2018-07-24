@@ -9,9 +9,30 @@
 import Foundation
 
 public class LaTeXImageView: UIImageView {
-    fileprivate var renderer: LaTeXRenderer?
+    private var laTeXRenderer: LaTeXRenderer!
     
-    public var backgroundColorWhileLoading: UIColor? = .white
+    public override init(image: UIImage?, highlightedImage: UIImage?) {
+        super.init(image: image, highlightedImage: highlightedImage)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+    }
+    
+    public override init(image: UIImage?) {
+        super.init(image: image)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+    }
+    
+    public var backgroundColorWhileRenderingLaTeX: UIColor? = .white
+    
     public var laTeX: String? {
         didSet {
             if let laTeX = laTeX {
@@ -21,27 +42,20 @@ public class LaTeXImageView: UIImageView {
     }
     
     private func renderLaTeX(_ laTeX: String) {
-        if self.renderer == nil {
-            self.renderer = LaTeXRenderer()
-            self.renderer?.delegate = self
-        }
+        guard self.laTeXRenderer.isReady else { return }
         
-        self.clipsToBounds = true
-        self.backgroundColor = self.backgroundColorWhileLoading
-        self.renderer?.render(laTeX, forView: self)
+        self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
+        self.laTeXRenderer.render(laTeX)
     }
 }
 
 extension LaTeXImageView: LaTeXRendererDelegate {
     public func LaTeXRendererDidComplete(image: UIImage) {
         self.image = image
-        self.renderer = nil
     }
     
     public func LaTeXRendererDidFail(_ message: String) {
         print("LaTeXImageView failed to render LaTeX")
-        print(message)
-        self.renderer = nil
     }
 }
 
