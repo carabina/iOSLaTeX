@@ -11,6 +11,7 @@ import Foundation
 public class LaTeXImageView: UIImageView {
     fileprivate var renderer: LaTeXRenderer?
     
+    public var backgroundColorWhileLoading: UIColor? = .white
     public var laTeX: String? {
         didSet {
             if let laTeX = laTeX {
@@ -26,7 +27,7 @@ public class LaTeXImageView: UIImageView {
         }
         
         self.clipsToBounds = true
-        self.backgroundColor = .white
+        self.backgroundColor = self.backgroundColorWhileLoading
         self.renderer?.render(laTeX, forView: self)
     }
 }

@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     func renderLaTeX(_ laTeX: String){
         self.view.endEditing(true)
+        laTeXImageView.backgroundColorWhileLoading = self.view.backgroundColor
         laTeXImageView.laTeX = laTeX
     }
     
