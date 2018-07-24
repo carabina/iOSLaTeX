@@ -31,8 +31,11 @@
             <script type="text/javascript" async src="mathjax/MathJax.js?config=TeX-AMS_CHTML-full"></script>
             
             <script type="text/x-mathjax-config">
-                MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'],['\\(','\\)'], ['[math]','[/math]']] } });
-            </script>
+                MathJax.Hub.Config({
+                                   messageStyle: "none",
+                                   tex2jax: { inlineMath: [['$','$'],['\\(','\\)'], ['[math]','[/math]']], preview: "none" }
+                                   });
+                </script>
             
             <script type="text/javascript">
                 function renderLaTeX(str) {
@@ -54,7 +57,7 @@
                 }
             }
             </script>
-    </head>
+            </head>
     
     <body>
         
