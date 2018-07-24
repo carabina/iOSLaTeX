@@ -159,7 +159,7 @@ public class LaTeXRenderer: NSObject {
     
     
     private func getLaTeXImage(withWidth width: Int, withHeight height: Int, completion: @escaping (UIImage?, String?) -> ()) {
-        webView.frame = CGRect(origin: webView.frame.origin, size: webView.scrollView.contentSize)
+        webView.frame = CGRect(origin: webView.frame.origin, size: CGSize(width: width, height: height))
         
         /*
          * If no delay, webview's frame change will not have taken effect yet
