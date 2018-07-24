@@ -13,22 +13,22 @@ public class LaTeXImageView: UIImageView {
     
     public override init(image: UIImage?, highlightedImage: UIImage?) {
         super.init(image: image, highlightedImage: highlightedImage)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self)
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self)
     }
     
     public override init(image: UIImage?) {
         super.init(image: image)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self, delegate: self)
+        self.laTeXRenderer = LaTeXRenderer(parentView: self)
     }
     
     public var backgroundColorWhileRenderingLaTeX: UIColor? = .white
@@ -45,17 +45,15 @@ public class LaTeXImageView: UIImageView {
         guard self.laTeXRenderer.isReady else { return }
         
         self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
-        self.laTeXRenderer.render(laTeX)
-    }
-}
-
-extension LaTeXImageView: LaTeXRendererDelegate {
-    public func LaTeXRendererDidComplete(image: UIImage) {
-        self.image = image
-    }
-    
-    public func LaTeXRendererDidFail(_ message: String) {
-        print("LaTeXImageView failed to render LaTeX")
+        
+        self.laTeXRenderer.render(laTeX) { [weak self] (renderedLaTeX, error)  in
+            if let _ = error {
+                print("LaTeX failed to render")
+            }
+            
+            self?.image = renderedLaTeX
+        }
+        
     }
 }
 

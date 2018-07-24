@@ -9,18 +9,12 @@
 import Foundation
 import WebKit
 
-public protocol LaTeXRendererDelegate: class {
-    func LaTeXRendererDidComplete(image: UIImage)
-    func LaTeXRendererDidFail(_ message: String)
-}
-
 public class LaTeXRenderer: NSObject {
     public var timeoutInSeconds: Double = 10.0
     public var delayInMilliseconds: Int = 100 /* see comments to understand usage */
     
     public fileprivate(set) var isReady: Bool = false
     
-    weak public var delegate: LaTeXRendererDelegate?
     weak private var parentView: UIView! /* needed to speed up rendering process */
     
     fileprivate var mathJaxCallbackHandler: String = "callbackHandler"
@@ -31,11 +25,12 @@ public class LaTeXRenderer: NSObject {
     
     private override init() {}
     
-    public init(parentView: UIView, delegate: LaTeXRendererDelegate?) {
+    var renderCompletionHander: ((UIImage?, String?)->())?
+    
+    public init(parentView: UIView) {
         super.init()
         
         self.parentView = parentView
-        self.delegate = delegate
         
         let bundle = Bundle(for: type(of: self))
         let bundlePath = bundle.bundlePath
@@ -78,11 +73,13 @@ public class LaTeXRenderer: NSObject {
         }
     }
     
-    public func render(_ laTeX: String) {
+    public func render(_ laTeX: String, completionHandler: ((UIImage?, String?)->())?) {
         guard self.isReady == true, let webView = webView else {
             self.handleLaTeXRenderingFailure("LaTeX Renderer not yet ready")
             return
         }
+        
+        self.renderCompletionHander = completionHandler
         
         self.hidingView = UIView(frame: self.parentView.bounds)
         self.hidingView!.backgroundColor = parentView.backgroundColor
@@ -116,7 +113,7 @@ public class LaTeXRenderer: NSObject {
     fileprivate func handleLaTeXRenderingFailure(_ message: String) {
         self.timeoutTimer?.invalidate()
         
-        self.delegate?.LaTeXRendererDidFail(message)
+        self.renderCompletionHander?(nil, message)
     }
     
     
@@ -152,7 +149,7 @@ public class LaTeXRenderer: NSObject {
             
             strongSelf.webView.isHidden = true
             
-            strongSelf.delegate?.LaTeXRendererDidComplete(image: image)
+            strongSelf.renderCompletionHander?(image, nil)
         }
     }
     
