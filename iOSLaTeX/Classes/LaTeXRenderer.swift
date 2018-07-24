@@ -143,8 +143,12 @@ public class LaTeXRenderer: NSObject {
                 return
             }
             
-            if let _ = strongSelf.hidingView?.superview, let _ = strongSelf.hidingView?.superview {
-                strongSelf.hidingView?.removeFromSuperview()
+            if let superview = strongSelf.webView.superview {
+                for subview in superview.subviews {
+                    if subview != strongSelf.webView {
+                        subview.removeFromSuperview()
+                    }
+                }
             }
             
             strongSelf.webView.isHidden = true
