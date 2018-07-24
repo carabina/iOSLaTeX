@@ -12,13 +12,26 @@ import iOSLaTeX
 class ViewController: UIViewController {
 
     @IBOutlet weak var laTeXImageView: LaTeXImageView!
+    @IBOutlet weak var textfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        laTeXImageView.contentMode = .scaleAspectFit
-        laTeXImageView.laTeX = """
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func renderLaTeX(_ laTeX: String){
+        self.view.endEditing(true)
+        laTeXImageView.laTeX = laTeX
+    }
+    
+    @IBAction func generateLaTeXButtonTapped(_ sender: Any) {
+        let textfieldText = textfield.text
+        let defaultLaTeXText = """
         [math]y=4x[/math]
         
         [math]3x-y=1[/math]
@@ -45,12 +58,12 @@ class ViewController: UIViewController {
         
         [math]y=-4[/math]
         """
+        
+        if let laTeX = textfieldText?.trimmingCharacters(in: .whitespaces), !laTeX.isEmpty {
+            renderLaTeX(laTeX)
+        } else {
+            renderLaTeX(defaultLaTeXText)
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
