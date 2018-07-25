@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var laTeXImageView: LaTeXImageView!
     @IBOutlet weak var textfield: UITextField!
     
+    private var laTeXRenderer: LaTeXRenderer?
+    
     let exampleLaTeXArray = [
         "$$(a_1 + a_2)^2 = a_1^2 + 2a_1a_2 + a_2^2$$",
         "$$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$$",
@@ -25,11 +27,18 @@ class ViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        /*
+         * You don't have to inject a LaTeX renderer but it is useful
+         * for cases where you have to render multiple LaTeX images but
+         * don't want 1 LaTeXRenderer per imageView
+         */
+        self.laTeXRenderer = LaTeXRenderer(parentView: self.view)
+        self.laTeXImageView.inject(laTeXRenderer: self.laTeXRenderer!)
         
         self.generateLaTeXButtonTapped(self)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -9,26 +9,10 @@
 import Foundation
 
 public class LaTeXImageView: UIImageView {
-    private var laTeXRenderer: LaTeXRenderer!
+    private var laTeXRenderer: LaTeXRenderer?
     
-    public override init(image: UIImage?, highlightedImage: UIImage?) {
-        super.init(image: image, highlightedImage: highlightedImage)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self)
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self)
-    }
-    
-    public override init(image: UIImage?) {
-        super.init(image: image)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self)
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.laTeXRenderer = LaTeXRenderer(parentView: self)
+    public func inject(laTeXRenderer: LaTeXRenderer){
+        self.laTeXRenderer = laTeXRenderer
     }
     
     public var backgroundColorWhileRenderingLaTeX: UIColor? = .white
@@ -42,10 +26,14 @@ public class LaTeXImageView: UIImageView {
     }
     
     private func renderLaTeX(_ laTeX: String) {
+        if self.laTeXRenderer == nil {
+            self.laTeXRenderer = LaTeXRenderer(parentView: self)
+        }
+        
         self.image = nil
         self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
 
-        self.laTeXRenderer.render(laTeX) { [weak self] (renderedLaTeX, error)  in
+        self.laTeXRenderer?.render(laTeX) { [weak self] (renderedLaTeX, error)  in
             if let _ = error {
                 print("LaTeX failed to render")
                 return
@@ -53,7 +41,6 @@ public class LaTeXImageView: UIImageView {
             
             self?.image = renderedLaTeX
         }
-        
     }
 }
 
