@@ -210,32 +210,8 @@ public class LaTeXRenderer: NSObject {
             
             UIGraphicsEndImageContext()
             
-            guard let croppedImage = strongSelf.crop(image, toWidth: width, andHeight: height) else {
-                completion(nil, "Failure while cropping WKWebView snapshot")
-                return
-            }
-            
-            completion(croppedImage, nil)
+            completion(image, nil)
         }
-    }
-    
-    private func crop(_ image: UIImage, toWidth width: Int, andHeight height: Int) -> UIImage? {
-        guard let cgImage = image.cgImage else {
-            return nil
-        }
-        
-        let cgImageWidth = cgImage.width
-        let cgImageHeight = cgImage.height
-        
-        let cropWidth =  CGFloat(width) / image.size.width * CGFloat(cgImageWidth)
-        let cropHeight =   CGFloat(height) / image.size.height * CGFloat(cgImageHeight)
-        let cropRect = CGRect(x: 0, y: 0, width: cropWidth, height: cropHeight)
-        
-        guard let croppedCgImage = cgImage.cropping(to: cropRect) else {
-            return nil
-        }
-        
-        return UIImage(cgImage: croppedCgImage)
     }
 }
 
