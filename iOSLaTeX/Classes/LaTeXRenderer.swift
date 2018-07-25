@@ -10,7 +10,7 @@ import Foundation
 import WebKit
 
 public class LaTeXRenderer: NSObject {
-    public var timeoutInSeconds: Double = 10.0
+    public var timeoutInSeconds: Double = 5.0
     public var delayInMilliseconds: Int = 100 /* see comments to understand usage */
     
     public fileprivate(set) var isReady: Bool = false
@@ -27,10 +27,14 @@ public class LaTeXRenderer: NSObject {
     
     var renderCompletionHander: ((UIImage?, String?)->())?
     
+    private var renderQueue: OperationQueue! = OperationQueue()
+    
     public init(parentView: UIView) {
         super.init()
         
         self.parentView = parentView
+        
+        self.renderQueue.maxConcurrentOperationCount = 1
         
         let bundle = Bundle(for: type(of: self))
         let bundlePath = bundle.bundlePath
@@ -73,13 +77,24 @@ public class LaTeXRenderer: NSObject {
         }
     }
     
-    public func render(_ laTeX: String, completionHandler: ((UIImage?, String?)->())?) {
-        guard self.isReady == true, let webView = webView else {
+    public func render(_ laTeX: String, completion: @escaping (UIImage?, String?)->()) {
+        guard self.isReady == true, let _ = webView else {
             self.handleLaTeXRenderingFailure("LaTeX Renderer not yet ready")
             return
         }
         
-        self.renderCompletionHander = completionHandler
+        let renderOperation = LaTeXRenderOperation(laTeX, withRenderer: self)
+        renderOperation.completionBlock = {
+            DispatchQueue.main.async {
+                completion(renderOperation.renderedLaTeX, renderOperation.error)
+            }
+        }
+        
+        self.renderQueue.addOperation(renderOperation)
+    }
+    
+    internal func startRendering(_ laTeX: String, completion: @escaping (UIImage?, String?)->()) {
+        self.renderCompletionHander = completion
         
         self.hidingView = UIView(frame: self.parentView.bounds)
         self.hidingView!.backgroundColor = parentView.backgroundColor
@@ -92,8 +107,10 @@ public class LaTeXRenderer: NSObject {
         /*
          * Need to escape '\' in javascript
          */
-        let js = "renderLaTeX('" + laTeX.replacingOccurrences(of: "\\", with: "\\\\") + "')"
-        webView.evaluateJavaScript(js, completionHandler: nil)
+        DispatchQueue.main.async { [weak self] in
+            let js = "renderLaTeX('" + laTeX.replacingOccurrences(of: "\\", with: "\\\\") + "')"
+            self?.webView.evaluateJavaScript(js, completionHandler: nil)
+        }
         
         self.timeoutTimer = Timer.scheduledTimer(
             timeInterval: self.timeoutInSeconds,
