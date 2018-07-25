@@ -1,12 +1,18 @@
 # iOSLaTeX
 
-iOSLaTeX provides a LaTeXRenderer which loads a minified version of MathJax in a WkWebView to render LaTeX in iOS. It returns image which can be used universally in iOS. It is accompanied by a LaTeXImageView class which uses LaTeXRenderer to display a latex string. See example project for usage.
+iOSLaTeX provides a LaTeXRenderer which loads a minified version of MathJax in a WkWebView to render LaTeX into native UIImage objects.
+
+## Usage
+
+LaTeXImageView is a subclass of `UIImageView` which uses a `LaTeXRenderer` object instance to render LaTeX text. It can be added programatically or through the Storyboard. Simply set the `latex` property on the object and it will handle the rest. 
+
+LaTeXRenderer provides an easy to use `render(_ laTeX:, completion:)` function which can be used to render LaTeX. Note that LaTeXRenderer needs to be initialized with a parent view present in the view hierarchy else LaTeX rendering will be slow or timeout.
+
+See example project for example code
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 

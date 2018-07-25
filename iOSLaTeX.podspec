@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
     s.name             = 'iOSLaTeX'
-    s.version          = '0.1.0'
-    s.summary          = 'iOSLaTeX uses MathJax to render LaTeX in iOS'
+    s.version          = '0.2.1'
+    s.summary          = 'iOS LaTeX Renderer written in Swift 3.2'
     
-    s.description      = 'iOSLaTeX provides a LaTeX Renderer which loads a minified version of MathJax in a WkWebView to render LaTeX in iOS. It returns image which can be used universally in iOS. It is also accompanied by a LaTeXImageView class.'
+    s.description      = 'iOSLaTeX provides a LaTeXRenderer which loads a minified version of MathJax in a WkWebView to render LaTeX into native UIImage objects'
     
     s.homepage         = 'https://github.com/shujew/iOSLaTeX'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
