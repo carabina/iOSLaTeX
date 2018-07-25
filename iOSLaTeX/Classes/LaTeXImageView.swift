@@ -20,12 +20,12 @@ public class LaTeXImageView: UIImageView {
     public var laTeX: String? {
         didSet {
             if let laTeX = laTeX {
-                self.renderLaTeX(laTeX)
+                self.render(laTeX)
             }
         }
     }
     
-    public func renderLaTeX(_ laTeX: String, completion: ((String?)->())? = nil) {
+    public func render(_ laTeX: String, completion: ((String?)->())? = nil) {
         if self.laTeXRenderer == nil {
             self.laTeXRenderer = LaTeXRenderer(parentView: self)
         }

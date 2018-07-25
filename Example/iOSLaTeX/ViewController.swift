@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         /*
         * You can use  `laTeXImageView.laTeX = laTeX` if you don't need the completion handler
         */
-        laTeXImageView.renderLaTeX(laTeX) { (error) in
+        laTeXImageView.render(laTeX) { (error) in
             if let error = error {
                 print("\(error)")
                 return
