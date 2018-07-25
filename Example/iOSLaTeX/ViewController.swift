@@ -34,6 +34,7 @@ class ViewController: UIViewController {
          * don't want 1 LaTeXRenderer per imageView
          */
         self.laTeXRenderer = LaTeXRenderer(parentView: self.view)
+        
         self.laTeXImageView.inject(laTeXRenderer: self.laTeXRenderer!)
         
         self.generateLaTeXButtonTapped(self)
@@ -47,7 +48,18 @@ class ViewController: UIViewController {
     func renderLaTeX(_ laTeX: String){
         self.view.endEditing(true)
         laTeXImageView.backgroundColorWhileRenderingLaTeX = self.view.backgroundColor
-        laTeXImageView.laTeX = laTeX
+        
+        /*
+        * You can use  `laTeXImageView.laTeX = laTeX` if you don't need the completion handler
+        */
+        laTeXImageView.renderLaTeX(laTeX) { (error) in
+            if let error = error {
+                print("\(error)")
+                return
+            }
+            
+            print("Successfully rendered LaTeX")
+        }
     }
     
     @IBAction func generateLaTeXButtonTapped(_ sender: Any) {

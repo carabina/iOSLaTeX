@@ -25,7 +25,7 @@ public class LaTeXImageView: UIImageView {
         }
     }
     
-    private func renderLaTeX(_ laTeX: String) {
+    public func renderLaTeX(_ laTeX: String, completion: ((String?)->())? = nil) {
         if self.laTeXRenderer == nil {
             self.laTeXRenderer = LaTeXRenderer(parentView: self)
         }
@@ -34,12 +34,11 @@ public class LaTeXImageView: UIImageView {
         self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
 
         self.laTeXRenderer?.render(laTeX) { [weak self] (renderedLaTeX, error)  in
-            if let _ = error {
-                print("LaTeX failed to render")
-                return
-            }
+            guard let strongSelf = self else { return }
             
-            self?.image = renderedLaTeX
+            strongSelf.image = renderedLaTeX
+            
+            completion?(error)
         }
     }
 }
