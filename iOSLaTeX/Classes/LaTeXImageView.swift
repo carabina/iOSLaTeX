@@ -42,8 +42,6 @@ public class LaTeXImageView: UIImageView {
     }
     
     private func renderLaTeX(_ laTeX: String) {
-        guard self.laTeXRenderer.isReady else { return }
-        
         self.image = nil
         self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
 

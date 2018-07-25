@@ -27,6 +27,16 @@ internal class LaTeXRenderOperation: AsyncOperation {
         
         self.executing(true)
         
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            while(!strongSelf.laTeXRenderer.isReady) { /* wait */ }
+            
+            strongSelf.renderLaTeX()
+        }
+    }
+    
+    func renderLaTeX(){
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
             

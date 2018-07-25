@@ -43,7 +43,7 @@ public class LaTeXRenderer: NSObject {
         let webViewBaseUrl = URL(fileURLWithPath: bundlePath, isDirectory: true)
         let webViewHtml = try! String(contentsOfFile: htmlTemplatePath)
         
-        let contentController = WKUserContentController();
+        let contentController = WKUserContentController()
         let config = WKWebViewConfiguration()
         
         contentController.add(self, name: self.mathJaxCallbackHandler)
@@ -78,11 +78,6 @@ public class LaTeXRenderer: NSObject {
     }
     
     public func render(_ laTeX: String, completion: @escaping (UIImage?, String?)->()) {
-        guard self.isReady == true, let _ = webView else {
-            self.handleLaTeXRenderingFailure("LaTeX Renderer not yet ready")
-            return
-        }
-        
         let renderOperation = LaTeXRenderOperation(laTeX, withRenderer: self)
         renderOperation.completionBlock = {
             DispatchQueue.main.async {
@@ -174,8 +169,6 @@ public class LaTeXRenderer: NSObject {
         }
     }
     
-    
-    
     private func getLaTeXImage(withWidth width: Int, withHeight height: Int, completion: @escaping (UIImage?, String?) -> ()) {
         webView.frame = CGRect(origin: webView.frame.origin, size: CGSize(width: width, height: height))
         
@@ -227,13 +220,11 @@ public class LaTeXRenderer: NSObject {
 
 extension LaTeXRenderer: WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if(message.name == self.mathJaxCallbackHandler) {
+        if (message.body as? String) == "ready" {
+            self.isReady = true
+        } else if message.name == self.mathJaxCallbackHandler {
             self.handleLaTeXRenderingSuccess(message: message.body)
         }
-    }
-    
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.isReady = true
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
