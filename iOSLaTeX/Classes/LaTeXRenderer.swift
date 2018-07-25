@@ -128,7 +128,7 @@ public class LaTeXRenderer: NSObject {
          * Need to escape '\' in javascript
          */
         DispatchQueue.main.async { [weak self] in
-            let js = "renderLaTeX('" + laTeX.replacingOccurrences(of: "\\", with: "\\\\") + "')"
+            let js = "renderLaTeX(`" + laTeX.replacingOccurrences(of: "\\", with: "\\\\") + "`)"
             self?.webView.evaluateJavaScript(js, completionHandler: nil)
         }
         
