@@ -204,10 +204,10 @@
 			children = (
 				E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */,
 				A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */,
+				A14BE5AA2107EA050098F783 /* LaTeXRenderOperation.swift */,
 				9B4BC34206CDD4D68356D552FB52F941 /* Pod */,
 				4F2E0527BB879EE8258664EE6B1F1FD7 /* Resources */,
 				45ADCF9C41BDD924A3C2F9B012543900 /* Support Files */,
-				A14BE5AA2107EA050098F783 /* LaTeXRenderOperation.swift */,
 			);
 			name = iOSLaTeX;
 			path = ../..;

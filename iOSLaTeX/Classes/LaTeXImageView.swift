@@ -44,11 +44,13 @@ public class LaTeXImageView: UIImageView {
     private func renderLaTeX(_ laTeX: String) {
         guard self.laTeXRenderer.isReady else { return }
         
+        self.image = nil
         self.backgroundColor = self.backgroundColorWhileRenderingLaTeX
-        
+
         self.laTeXRenderer.render(laTeX) { [weak self] (renderedLaTeX, error)  in
             if let _ = error {
                 print("LaTeX failed to render")
+                return
             }
             
             self?.image = renderedLaTeX
