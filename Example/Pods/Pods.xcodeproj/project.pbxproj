@@ -15,7 +15,7 @@
 		78B6317CE3B9EC6E4203EA95A50D499D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7277D349E694C53053AFD4685658010 /* Foundation.framework */; };
 		831E961F83E5E9D05CF1FC1C01F32DF8 /* iOSLaTeX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ADF8FCAC62B4FBF0D55703ACCF966F65 /* iOSLaTeX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D6D5B89BAE14229F1E2B457784D7732 /* Pods-iOSLaTeX_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCAACF17241729F32615B9989823AD /* Pods-iOSLaTeX_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A14BE5AB2107EA050098F783 /* LaTeXRenderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BE5AA2107EA050098F783 /* LaTeXRenderOperation.swift */; };
+		A19974E82107F844009FD289 /* LaTeXRenderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19974E72107F843009FD289 /* LaTeXRenderOperation.swift */; };
 		A93C9B672ECD5105CCDAE6A716F7E1AC /* Pods-iOSLaTeX_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B33FBC6E7F17C1165D69A08D8236384 /* Pods-iOSLaTeX_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4546E82F8E88BA7CF41927CE6227A6F /* LaTeXImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */; };
 		D8761261E7255F20217424F7C26A5208 /* mathjax in Resources */ = {isa = PBXBuildFile; fileRef = 9DC4112EDCF01177FB3BDD999387B850 /* mathjax */; };
@@ -67,8 +67,8 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DC4112EDCF01177FB3BDD999387B850 /* mathjax */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = mathjax; sourceTree = "<group>"; };
 		A13B7EDDAE7914DB601031EB6092A7B2 /* Pods-iOSLaTeX_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iOSLaTeX_Example-dummy.m"; sourceTree = "<group>"; };
-		A14BE5AA2107EA050098F783 /* LaTeXRenderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaTeXRenderOperation.swift; sourceTree = "<group>"; };
 		A18376EFF51F20D5DB70CB71708C0D95 /* Pods-iOSLaTeX_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iOSLaTeX_Example.modulemap"; sourceTree = "<group>"; };
+		A19974E72107F843009FD289 /* LaTeXRenderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaTeXRenderOperation.swift; path = iOSLaTeX/Classes/LaTeXRenderOperation.swift; sourceTree = "<group>"; };
 		A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LaTeXRenderer.swift; path = iOSLaTeX/Classes/LaTeXRenderer.swift; sourceTree = "<group>"; };
 		A5CCAACF17241729F32615B9989823AD /* Pods-iOSLaTeX_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iOSLaTeX_Example-umbrella.h"; sourceTree = "<group>"; };
 		ADF8FCAC62B4FBF0D55703ACCF966F65 /* iOSLaTeX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSLaTeX-umbrella.h"; sourceTree = "<group>"; };
@@ -202,9 +202,9 @@
 		6605D9542AA7F60D0A7AE5EAC00EACF8 /* iOSLaTeX */ = {
 			isa = PBXGroup;
 			children = (
+				A19974E72107F843009FD289 /* LaTeXRenderOperation.swift */,
 				E6F5366A0F9CF3475E22E4AD70A5D5A6 /* LaTeXImageView.swift */,
 				A47AE5D58160C241B83F4C038D3BCB97 /* LaTeXRenderer.swift */,
-				A14BE5AA2107EA050098F783 /* LaTeXRenderOperation.swift */,
 				9B4BC34206CDD4D68356D552FB52F941 /* Pod */,
 				4F2E0527BB879EE8258664EE6B1F1FD7 /* Resources */,
 				45ADCF9C41BDD924A3C2F9B012543900 /* Support Files */,
@@ -414,7 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A14BE5AB2107EA050098F783 /* LaTeXRenderOperation.swift in Sources */,
+				A19974E82107F844009FD289 /* LaTeXRenderOperation.swift in Sources */,
 				E32E51D78CFED0763B1E0CC8F07B960C /* iOSLaTeX-dummy.m in Sources */,
 				C4546E82F8E88BA7CF41927CE6227A6F /* LaTeXImageView.swift in Sources */,
 				62B0F948DA325C8A4C4084F7858FC8D1 /* LaTeXRenderer.swift in Sources */,
