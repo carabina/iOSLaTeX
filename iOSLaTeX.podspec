@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'iOSLaTeX'
-    s.version          = '0.2.1'
+    s.version          = '0.2.2'
     s.summary          = 'iOS LaTeX Renderer written in Swift 3.2'
     
     s.description      = 'iOSLaTeX provides a LaTeXRenderer which loads a minified version of MathJax in a WkWebView to render LaTeX into native UIImage objects'
