@@ -95,6 +95,9 @@ public class LaTeXRenderer: NSObject {
         self.hidingView!.backgroundColor = parentView.backgroundColor
         self.parentView.addSubview(self.hidingView!)
         
+        self.parentView.sendSubview(toBack: self.hidingView!)
+        self.parentView.sendSubview(toBack: self.webView)
+        
         self.timeoutTimer?.invalidate()
         self.webView.stopLoading()
         self.webView.isHidden = false
@@ -155,12 +158,8 @@ public class LaTeXRenderer: NSObject {
                 return
             }
             
-            if let superview = strongSelf.webView.superview {
-                for subview in superview.subviews {
-                    if subview != strongSelf.webView {
-                        subview.removeFromSuperview()
-                    }
-                }
+            if let hidingView = strongSelf.hidingView, let _ = hidingView.superview {
+               hidingView.removeFromSuperview()
             }
             
             strongSelf.webView.isHidden = true
