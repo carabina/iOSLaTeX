@@ -59,8 +59,30 @@ public class LaTeXRenderer: NSObject {
          * If not added, complex/long LaTeX will take ages to render
          */
         self.webView.isHidden = true
+        
+        self.webView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.parentView.addSubview(self.webView)
         self.parentView.sendSubview(toBack: self.webView)
+        
+        if #available(iOS 11, *) {
+            let guide = self.parentView.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                self.webView.topAnchor.constraintEqualToSystemSpacingBelow(guide.topAnchor, multiplier: 1.0),
+                guide.bottomAnchor.constraintEqualToSystemSpacingBelow(self.webView.bottomAnchor, multiplier: 1.0),
+                self.webView.leftAnchor.constraint(equalTo: self.parentView.leftAnchor, constant: 0),
+                self.webView.rightAnchor.constraint(equalTo: self.parentView.rightAnchor, constant: 0)
+                ])
+            
+        } else {
+            let standardSpacing: CGFloat = 8.0
+            NSLayoutConstraint.activate([
+                self.webView.topAnchor.constraint(equalTo: self.parentView.topAnchor, constant: standardSpacing),
+                self.parentView.bottomAnchor.constraint(equalTo: self.webView.bottomAnchor, constant: standardSpacing),
+                self.webView.leftAnchor.constraint(equalTo: self.parentView.leftAnchor, constant: 0),
+                self.webView.rightAnchor.constraint(equalTo: self.parentView.rightAnchor, constant: 0)
+                ])
+        }
         
         /*
          * Figure out why delay is needed here
