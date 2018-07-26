@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var laTeXImageView: LaTeXImageView!
     @IBOutlet weak var textfield: UITextField!
     
+    @IBOutlet weak var laTexImageViewHeightConstraint: NSLayoutConstraint!
+    
     private var laTeXRenderer: LaTeXRenderer?
     
     let exampleLaTeXArray = [
@@ -36,6 +38,7 @@ class ViewController: UIViewController {
         self.laTeXRenderer = LaTeXRenderer(parentView: self.view)
         
         self.laTeXImageView.inject(laTeXRenderer: self.laTeXRenderer!)
+        self.laTeXImageView.heightConstraint = laTexImageViewHeightConstraint
         
         self.generateLaTeXButtonTapped(self)
     }
@@ -52,7 +55,7 @@ class ViewController: UIViewController {
         /*
         * You can use  `laTeXImageView.laTeX = laTeX` if you don't need the completion handler
         */
-        laTeXImageView.render(laTeX) { (error) in
+        laTeXImageView.render(laTeX, shouldResize: true) { (error) in
             if let error = error {
                 print("\(error)")
                 return

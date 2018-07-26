@@ -11,6 +11,8 @@ import Foundation
 open class LaTeXImageView: UIImageView {
     private var laTeXRenderer: LaTeXRenderer?
     
+    open weak var heightConstraint: NSLayoutConstraint?
+    
     open func inject(laTeXRenderer: LaTeXRenderer){
         self.laTeXRenderer = laTeXRenderer
     }
@@ -25,7 +27,7 @@ open class LaTeXImageView: UIImageView {
         }
     }
     
-    open func render(_ laTeX: String, completion: ((String?)->())? = nil) {
+    open func render(_ laTeX: String, shouldResize: Bool = false, completion: ((String?)->())? = nil) {
         if self.laTeXRenderer == nil {
             self.laTeXRenderer = LaTeXRenderer(parentView: self)
         }
@@ -38,8 +40,24 @@ open class LaTeXImageView: UIImageView {
             
             strongSelf.image = renderedLaTeX
             
+            if shouldResize, let heightConstraint = strongSelf.heightConstraint, let image = renderedLaTeX {
+                let newHeight = strongSelf.calculateHeight(forImage: image, withContainerWidth: strongSelf.frame.size.width)
+                heightConstraint.constant = newHeight
+            }
+            
             completion?(error)
         }
+    }
+    
+    open func calculateHeight(forImage image: UIImage, withContainerWidth containerWidth: CGFloat) -> CGFloat {
+        let imageHeight = image.size.height
+        let imageWidth = image.size.width
+        
+        guard imageHeight > 0, imageWidth > 0 else {
+            return 0
+        }
+                
+        return containerWidth * image.size.height / image.size.width
     }
 }
 

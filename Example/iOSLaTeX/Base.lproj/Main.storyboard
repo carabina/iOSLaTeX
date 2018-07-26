@@ -23,7 +23,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DK2-TD-0jm" customClass="LaTeXImageView" customModule="iOSLaTeX">
-                                <rect key="frame" x="16" y="136" width="343" height="523"/>
+                                <rect key="frame" x="16" y="136" width="343" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="T3m-EG-oRy"/>
+                                </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBf-TF-txe">
                                 <rect key="frame" x="16" y="40" width="343" height="50"/>
@@ -50,17 +53,17 @@
                             <constraint firstItem="fBf-TF-txe" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="2jb-oY-sX9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DK2-TD-0jm" secondAttribute="trailing" id="3V2-9e-LgO"/>
                             <constraint firstItem="ag6-P3-FhZ" firstAttribute="top" secondItem="fBf-TF-txe" secondAttribute="bottom" constant="8" symbolic="YES" id="ACp-VG-I14"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DK2-TD-0jm" secondAttribute="bottom" constant="8" symbolic="YES" id="DAZ-Ro-vxx"/>
                             <constraint firstItem="fBf-TF-txe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="I8Z-Tf-JQe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ag6-P3-FhZ" secondAttribute="trailing" constant="20" id="Moq-fU-saj"/>
                             <constraint firstItem="DK2-TD-0jm" firstAttribute="top" secondItem="ag6-P3-FhZ" secondAttribute="bottom" constant="8" symbolic="YES" id="WQo-Ju-JVR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fBf-TF-txe" secondAttribute="trailing" id="cLo-XO-yEU"/>
-                            <constraint firstItem="DK2-TD-0jm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="qox-8n-NUU"/>
                             <constraint firstItem="ag6-P3-FhZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="wI8-iY-Qep"/>
+                            <constraint firstItem="DK2-TD-0jm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="xrL-M5-Pml"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="laTeXImageView" destination="DK2-TD-0jm" id="Grf-J0-0WW"/>
+                        <outlet property="laTexImageViewHeightConstraint" destination="T3m-EG-oRy" id="qBt-0t-E7y"/>
                         <outlet property="textfield" destination="fBf-TF-txe" id="g00-yt-sWN"/>
                     </connections>
                 </viewController>
