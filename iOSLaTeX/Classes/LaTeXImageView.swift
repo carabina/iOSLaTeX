@@ -38,13 +38,15 @@ open class LaTeXImageView: UIImageView {
         self.laTeXRenderer?.render(laTeX) { [weak self] (renderedLaTeX, error)  in
             guard let strongSelf = self else { return }
             
-            strongSelf.image = renderedLaTeX
-            
-            if shouldResize, let heightConstraint = strongSelf.heightConstraint, let image = renderedLaTeX {
-                let newHeight = strongSelf.calculateHeight(forImage: image, withContainerWidth: strongSelf.frame.size.width)
-                heightConstraint.constant = newHeight
+            if error == nil {
+                strongSelf.image = renderedLaTeX
+                
+                if shouldResize, let heightConstraint = strongSelf.heightConstraint, let image = renderedLaTeX {
+                    let newHeight = strongSelf.calculateHeight(forImage: image, withContainerWidth: strongSelf.frame.size.width)
+                    heightConstraint.constant = newHeight
+                }
             }
-            
+
             completion?(error)
         }
     }
