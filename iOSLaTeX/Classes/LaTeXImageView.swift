@@ -56,8 +56,12 @@ open class LaTeXImageView: UIImageView {
         guard imageHeight > 0, imageWidth > 0 else {
             return 0
         }
-                
-        return containerWidth * image.size.height / image.size.width
+        
+        if imageWidth > containerWidth {
+            return containerWidth * image.size.height / image.size.width
+        } else {
+            return image.size.height
+        }
     }
 }
 
