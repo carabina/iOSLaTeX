@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class LaTeXImageView: UIImageView {
+open class LaTeXImageView: UIImageView {
     private var laTeXRenderer: LaTeXRenderer?
     
-    public func inject(laTeXRenderer: LaTeXRenderer){
+    open func inject(laTeXRenderer: LaTeXRenderer){
         self.laTeXRenderer = laTeXRenderer
     }
     
-    public var backgroundColorWhileRenderingLaTeX: UIColor? = .white
+    open var backgroundColorWhileRenderingLaTeX: UIColor? = .white
     
-    public var laTeX: String? {
+    open var laTeX: String? {
         didSet {
             if let laTeX = laTeX {
                 self.render(laTeX)
@@ -25,7 +25,7 @@ public class LaTeXImageView: UIImageView {
         }
     }
     
-    public func render(_ laTeX: String, completion: ((String?)->())? = nil) {
+    open func render(_ laTeX: String, completion: ((String?)->())? = nil) {
         if self.laTeXRenderer == nil {
             self.laTeXRenderer = LaTeXRenderer(parentView: self)
         }
