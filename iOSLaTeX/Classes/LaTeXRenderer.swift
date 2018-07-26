@@ -180,18 +180,20 @@ public class LaTeXRenderer: NSObject {
                 return
             }
             
+            strongSelf.webView.isHidden = true
+            
             if let hidingView = strongSelf.hidingView, let _ = hidingView.superview {
                hidingView.removeFromSuperview()
             }
-            
-            strongSelf.webView.isHidden = true
             
             strongSelf.renderCompletionHander?(image, nil)
         }
     }
     
     private func getLaTeXImage(withWidth width: Int, withHeight height: Int, completion: @escaping (UIImage?, String?) -> ()) {
-        webView.frame = CGRect(origin: webView.frame.origin, size: CGSize(width: width, height: height))
+        let frameAdjustedForLaTeXSize = CGRect(origin: webView.frame.origin, size: CGSize(width: width, height: height))
+        self.webView.frame = frameAdjustedForLaTeXSize
+        self.hidingView?.frame = frameAdjustedForLaTeXSize
         
         /*
          * If no delay, webview's frame change will not have taken effect yet
